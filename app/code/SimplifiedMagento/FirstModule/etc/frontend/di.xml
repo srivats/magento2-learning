@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+<!--    <preference for="SimplifiedMagento\FirstModule\NotMagento\PencilInterface" type="SimplifiedMagento\FirstModule\NotMagento\RedPencil" />-->
+    <preference for="\Magento\Catalog\Api\ProductRepositoryInterface" type="SimplifiedMagento\FirstModule\Model\CustomImplementation" />
+
+    <preference for="SimplifiedMagento\FirstModule\Api\PencilInterface" type="SimplifiedMagento\FirstModule\Model\Pencil" />
+    <preference for="SimplifiedMagento\FirstModule\Api\ColorInterface" type="SimplifiedMagento\FirstModule\Model\Color" />
+    <preference for="SimplifiedMagento\FirstModule\Api\SizeInterface" type="SimplifiedMagento\FirstModule\Model\Big" />
+    <preference for="SimplifiedMagento\FirstModule\Api\Brightness" type="SimplifiedMagento\FirstModule\Model\Medium" />
+
+    <type name="SimplifiedMagento\FirstModule\Model\Pencil">
+        <arguments>
+            <argument xsi:type="object" name="color">virtualtype</argument>
+            <argument xsi:type="object" name="size">SimplifiedMagento\FirstModule\Model\Big</argument>
+        </arguments>
+    </type>
+    <type name="\SimplifiedMagento\FirstModule\Model\Student">
+        <arguments>
+            <argument xsi:type="string" name="name">John</argument>
+            <argument xsi:type="number" name="age">35</argument>
+            <argument xsi:type="array" name="scores">
+                <item xsi:type="number" name="maths">100</item>
+                <item xsi:type="number" name="science">99</item>
+                <item xsi:type="number" name="history">98</item>
+            </argument>
+        </arguments>
+
+    </type>
+
+    <virtualType name="virtualtype" type="\SimplifiedMagento\FirstModule\Model\Red">
+        <arguments>
+            <argument xsi:type="object" name="brightness">SimplifiedMagento\FirstModule\Model\Low</argument>
+        </arguments>
+
+    </virtualType>
+</config>
